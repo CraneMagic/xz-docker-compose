@@ -1,0 +1,68 @@
+version: "3.7"
+services:
+  cranemagic-middleware:
+    image: yijun9124/ksdp-service-middleware
+    depends_on:
+      - ksdp-db
+      - mqtt-broker
+    ports:
+      - "7667:7667"
+    environments:
+      - LOCALHOST
+      - DB_HOST
+      - DB_PORT
+      - MQTT_HOST
+      - CONTROLLER_URL
+      - MIDDLEWARE_URL
+    restart: always
+  cranemagic-web:
+    image: yijun9124/ksdp-service-webapi
+    depends_on:
+      - ksdp-db
+      - mqtt-broker
+    ports:
+      - "6776:6776"
+    environments:
+      - LOCALHOST
+      - DB_HOST
+      - DB_PORT
+      - MQTT_HOST
+      - CONTROLLER_URL
+      - MIDDLEWARE_URL
+    restart: always
+  cranemagic-mqtt:
+    image: yijun9124/ksdp-service-mqtt
+    depends_on:
+      - ksdp-db
+      - mqtt-broker
+    environments:
+      - LOCALHOST
+      - DB_HOST
+      - DB_PORT
+      - MQTT_HOST
+      - CONTROLLER_URL
+      - MIDDLEWARE_URL
+    restart: always
+  ksdp-frontend-nginx:
+    image: yijun9124/ksdp-frontend-wms-nginx
+    depends_on:
+      - ksdp-db
+      - mqtt-broker
+    ports:
+      - "80:80"
+    restart: always
+  mqtt-broker:
+    image: yijun9124/ksdp-mosquitto
+    ports:
+      - "1883:1883"
+      - "1884:1884"
+      - "8083:8083"
+      - "8084:8084"
+    restart: always
+  ksdp-db:
+    image: yijun9124/ksdp-database-amd64
+    ports:
+      - "6612:3306"
+    environments:
+      - MYSQL_ROOT_PASSWORD
+    restart: always
