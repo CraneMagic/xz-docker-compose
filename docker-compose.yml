@@ -7,7 +7,7 @@ services:
       - mqtt-broker
     ports:
       - "7667:7667"
-    environments:
+    environment:
       - LOCALHOST
       - DB_HOST
       - DB_PORT
@@ -22,7 +22,7 @@ services:
       - mqtt-broker
     ports:
       - "6776:6776"
-    environments:
+    environment:
       - LOCALHOST
       - DB_HOST
       - DB_PORT
@@ -35,7 +35,7 @@ services:
     depends_on:
       - ksdp-db
       - mqtt-broker
-    environments:
+    environment:
       - LOCALHOST
       - DB_HOST
       - DB_PORT
@@ -63,6 +63,6 @@ services:
     image: yijun9124/ksdp-database-amd64
     ports:
       - "6612:3306"
-    environments:
+    environment:
       - MYSQL_ROOT_PASSWORD
     restart: always
