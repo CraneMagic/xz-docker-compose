@@ -60,7 +60,7 @@ services:
       - "8084:8084"
     restart: always
   ksdp-db:
-    image: yijun9124/ksdp-database-amd64
+    image: yijun9124/ksdp-database
     ports:
       - "6612:3306"
     environment:
