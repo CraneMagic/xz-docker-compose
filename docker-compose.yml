@@ -1,9 +1,9 @@
 version: "3.7"
 services:
-  cranemagic-middleware:
-    image: yijun9124/ksdp-service-middleware
+  xz-middleware:
+    image: yijun9124/xz-service-middleware
     depends_on:
-      - ksdp-db
+      - xz-db
       - mqtt-broker
     ports:
       - "7667:7667"
@@ -16,9 +16,9 @@ services:
       - MIDDLEWARE_URL
     restart: always
   cranemagic-web:
-    image: yijun9124/ksdp-service-webapi
+    image: yijun9124/cranemagic-service-webapi
     depends_on:
-      - ksdp-db
+      - xz-db
       - mqtt-broker
     ports:
       - "6776:6776"
@@ -31,9 +31,9 @@ services:
       - MIDDLEWARE_URL
     restart: always
   cranemagic-mqtt:
-    image: yijun9124/ksdp-service-mqtt
+    image: yijun9124/cranemagic-service-mqtt
     depends_on:
-      - ksdp-db
+      - xz-db
       - mqtt-broker
     environment:
       - LOCALHOST
@@ -43,26 +43,28 @@ services:
       - CONTROLLER_URL
       - MIDDLEWARE_URL
     restart: always
-  ksdp-frontend-nginx:
-    image: yijun9124/ksdp-frontend-wms-nginx
+  cranemagic-frontend-nginx:
+    image: yijun9124/cranemagic-frontend-wms-nginx
     depends_on:
-      - ksdp-db
+      - xz-db
       - mqtt-broker
     ports:
       - "80:80"
     restart: always
   mqtt-broker:
-    image: yijun9124/ksdp-mosquitto
+    image: yijun9124/cranemagic-mosquitto
     ports:
       - "1883:1883"
       - "1884:1884"
       - "8083:8083"
       - "8084:8084"
     restart: always
-  ksdp-db:
-    image: yijun9124/ksdp-database
+  xz-db:
+    image: yijun9124/xz-database
     ports:
       - "6612:3306"
     environment:
       - MYSQL_ROOT_PASSWORD
     restart: always
+    volumes:
+      - ./data:/var/lib/mysql
