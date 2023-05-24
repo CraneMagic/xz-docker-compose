@@ -68,3 +68,14 @@ services:
     restart: always
     volumes:
       - ./data:/var/lib/mysql
+  
+  cranemagic_tcp:
+    image: yijun9124/cranemagic-servers-tcp
+    container_name: cranemagic_tcp
+    ports:
+      - "5024:5024"
+  cranemagic_udp:
+    image: yijun9124/cranemagic-servers-udp
+    container_name: cranemagic_udp
+    ports:
+      - "5025:5025/udp"
