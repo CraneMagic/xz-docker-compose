@@ -14,6 +14,7 @@ services:
       - MQTT_HOST
       - CONTROLLER_URL
       - MIDDLEWARE_URL
+      - WAREHOUSE_ID
     restart: always
   cranemagic-web:
     image: yijun9124/cranemagic-service-webapi
@@ -29,6 +30,7 @@ services:
       - MQTT_HOST
       - CONTROLLER_URL
       - MIDDLEWARE_URL
+      - WAREHOUSE_ID
     restart: always
   cranemagic-mqtt:
     image: yijun9124/cranemagic-service-mqtt
@@ -42,6 +44,7 @@ services:
       - MQTT_HOST
       - CONTROLLER_URL
       - MIDDLEWARE_URL
+      - WAREHOUSE_ID
     restart: always
   cranemagic-frontend-nginx:
     image: yijun9124/cranemagic-frontend-wms-nginx
