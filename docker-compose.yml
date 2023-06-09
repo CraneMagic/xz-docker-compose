@@ -45,6 +45,8 @@ services:
       - CONTROLLER_URL
       - MIDDLEWARE_URL
       - WAREHOUSE_ID
+      - CRANE_ID_MATERIAL_INPUTS
+      - CRANE_ID_MATERIAL_UPLOAD
     restart: always
   cranemagic-frontend-nginx:
     image: yijun9124/cranemagic-frontend-wms-nginx
@@ -77,8 +79,14 @@ services:
     container_name: cranemagic_tcp
     ports:
       - "5024:5024"
+    environment:
+      - LOCALHOST
+      - MQTT_HOST
   cranemagic_udp:
     image: yijun9124/cranemagic-servers-udp
     container_name: cranemagic_udp
     ports:
       - "5025:5025/udp"
+    environment:
+      - LOCALHOST
+      - MQTT_HOST
