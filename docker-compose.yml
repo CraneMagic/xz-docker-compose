@@ -15,6 +15,8 @@ services:
       - CONTROLLER_URL
       - MIDDLEWARE_URL
       - WAREHOUSE_ID
+      - CRANE_ID_MATERIAL_INPUTS
+      - CRANE_ID_MATERIAL_UPLOAD
     restart: always
   cranemagic-web:
     image: yijun9124/cranemagic-service-webapi
