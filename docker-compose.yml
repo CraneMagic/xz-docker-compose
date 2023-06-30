@@ -98,6 +98,7 @@ services:
     environment:
       - LOCALHOST
       - MQTT_HOST
+    restart: always
   cranemagic_udp:
     image: yijun9124/cranemagic-servers-udp
     container_name: cranemagic_udp
@@ -106,3 +107,4 @@ services:
     environment:
       - LOCALHOST
       - MQTT_HOST
+    restart: always
