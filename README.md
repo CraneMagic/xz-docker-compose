@@ -1,4 +1,8 @@
 # xz-docker-compose
+[![wakatime](https://wakatime.com/badge/user/c8aae5ed-4c41-4d78-8639-977004fe4a4a/project/258cf48d-4144-496c-bff7-4a73e0073d8e.svg)](https://wakatime.com/badge/user/c8aae5ed-4c41-4d78-8639-977004fe4a4a/project/258cf48d-4144-496c-bff7-4a73e0073d8e)
+
+---
+
 [![Xuzhou Service Middleware CI - Develop](https://github.com/CraneMagic/xz-service-middleware/actions/workflows/ci.yml/badge.svg)](https://github.com/CraneMagic/xz-service-middleware/actions/workflows/ci.yml)
 
 [![Xuzhou Database CI - Develop](https://github.com/CraneMagic/xz-database/actions/workflows/ci.yml/badge.svg)](https://github.com/CraneMagic/xz-database/actions/workflows/ci.yml)
