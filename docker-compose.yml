@@ -44,8 +44,28 @@ services:
       - CRANE_MATERIAL_UPLOAD_PRIORITY
       - CRANE_MATERIAL_UPLOAD_RESET_POSITION
     restart: always
-  cranemagic-mqtt:
-    image: yijun9124/cranemagic-service-mqtt
+  cranemagic-mqtt-cms:
+    image: yijun9124/cranemagic-service-mqtt-cms
+    depends_on:
+      - xz-db
+      - mqtt-broker
+    environment:
+      - LOCALHOST
+      - DB_HOST
+      - DB_PORT
+      - MQTT_HOST
+      - CONTROLLER_URL
+      - MIDDLEWARE_URL
+      - WAREHOUSE_ID
+      - CRANE_ID_MATERIAL_INPUTS
+      - CRANE_MATERIAL_INPUTS_PRIORITY
+      - CRANE_MATERIAL_INPUTS_RESET_POSITION
+      - CRANE_ID_MATERIAL_UPLOAD
+      - CRANE_MATERIAL_UPLOAD_PRIORITY
+      - CRANE_MATERIAL_UPLOAD_RESET_POSITION
+    restart: always
+  cranemagic-mqtt-scanner:
+    image: yijun9124/cranemagic-service-mqtt-scanner
     depends_on:
       - xz-db
       - mqtt-broker
