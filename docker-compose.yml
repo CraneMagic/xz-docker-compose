@@ -44,6 +44,18 @@ services:
       - CRANE_MATERIAL_UPLOAD_PRIORITY
       - CRANE_MATERIAL_UPLOAD_RESET_POSITION
     restart: always
+  cranemagic-controller-mock:
+    image: yijun9124/cranemagic-controller-mock
+    ports:
+      - "9090:8888"
+    environment:
+      - LOCALHOST
+      - DB_HOST
+      - DB_PORT
+      - MQTT_HOST
+      - CONTROLLER_URL
+      - MIDDLEWARE_URL
+    restart: always
   cranemagic-mqtt-cms:
     image: yijun9124/cranemagic-service-mqtt-cms
     depends_on:
