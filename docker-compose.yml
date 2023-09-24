@@ -75,6 +75,7 @@ services:
       - CRANE_ID_MATERIAL_UPLOAD
       - CRANE_MATERIAL_UPLOAD_PRIORITY
       - CRANE_MATERIAL_UPLOAD_RESET_POSITION
+      - TASK_FINISH_URI
     restart: always
   cranemagic-mqtt-scanner:
     image: yijun9124/cranemagic-service-mqtt-scanner
